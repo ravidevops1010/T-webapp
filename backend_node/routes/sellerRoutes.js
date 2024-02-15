@@ -11,3 +11,5 @@ router.post('/', authMiddleware.authenticate, sellerController.createSeller);
 
 module.exports = router;
 
+
+

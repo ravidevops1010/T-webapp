@@ -1,4 +1,5 @@
-const Seller = require('../models/seller');
+
+const Seller = require('../models/Seller');
 
 exports.getAllSellers = async (req, res) => {
   try {
@@ -9,6 +10,8 @@ exports.getAllSellers = async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 };
+
+
 
 exports.createSeller = async (req, res) => {
   try {
@@ -26,3 +29,4 @@ exports.createSeller = async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 };
+
