@@ -7,7 +7,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 router.get('/', sellerController.getAllSellers);
 
 // POST route to create a new seller (requires authentication)
-router.post('/', authMiddleware.authenticate, sellerController.createSeller);
+router.post('/', authMiddleware, sellerController.createSeller);
 
 module.exports = router;
 
