@@ -12,22 +12,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/sellers', sellerRoutes);
+app.use('/api/upload', uploadRoutes);
+
+
+// MongoDB Connection
 mongoose.connect(config.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(() => {
   console.log('Connected to MongoDB');
+  // Start the server
+  app.listen(3001, () => {
+    console.log('Server is running on port 3001');
+  });
 })
 .catch(error => console.error(error));
-
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/sellers', sellerRoutes);
-app.use('/api/upload', uploadRoutes);
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
